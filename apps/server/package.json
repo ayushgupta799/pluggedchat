@@ -1,0 +1,25 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "private": true,
+    "devDependencies": {
+        "prisma": "^6.6.0",
+        "tsc-watch": "^6.2.1",
+        "typescript": "^5.8.3"
+    },
+    "scripts": {
+        "start": "node dist/index",
+        "build": "yarn tsc -p .",
+        "dev": "yarn tsc-watch --onSuccess \"node dist/index.js\""
+    },
+    "dependencies": {
+        "@prisma/client": "^6.6.0",
+        "@types/node": "^22.15.0",
+        "ioredis": "^5.6.1",
+        "iovalkey": "^0.3.1",
+        "kafkajs": "^2.2.4",
+        "socket.io": "^4.8.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    }
+}
