@@ -5,7 +5,19 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "DATABASE_URL",
+        "REDIS_HOST",
+        "REDIS_PORT",
+        "REDIS_USERNAME",
+        "REDIS_PASSWORD",
+        "KAFKA_BROKER",
+        "KAFKA_USERNAME",
+        "KAFKA_PASSWORD",
+        "KAFKA_GROUP_ID",
+        "KAFKA_TOPIC"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -14,6 +26,41 @@
       "dependsOn": ["^check-types"]
     },
     "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "server#build": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", ".env"],
+      "outputs": ["dist/**"],
+      "env": [
+        "DATABASE_URL",
+        "REDIS_HOST",
+        "REDIS_PORT",
+        "REDIS_USERNAME",
+        "REDIS_PASSWORD",
+        "KAFKA_BROKER",
+        "KAFKA_USERNAME",
+        "KAFKA_PASSWORD",
+        "KAFKA_GROUP_ID",
+        "KAFKA_TOPIC"
+      ],
+      "cache": false
+    },
+    "server#dev": {
+      "dependsOn": ["^build"],
+      "env": [
+        "DATABASE_URL",
+        "REDIS_HOST",
+        "REDIS_PORT",
+        "REDIS_USERNAME",
+        "REDIS_PASSWORD",
+        "KAFKA_BROKER",
+        "KAFKA_USERNAME",
+        "KAFKA_PASSWORD",
+        "KAFKA_GROUP_ID",
+        "KAFKA_TOPIC"
+      ],
       "cache": false,
       "persistent": true
     }
